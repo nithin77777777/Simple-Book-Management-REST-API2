@@ -1,0 +1,127 @@
+{
+  "info": {
+    "_postman_id": "c8d7e3c0-1a2a-4b8a-9f3a-2b1d4c5d6e7f",
+    "name": "Book Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get All Books",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books"]
+        }
+      }
+    },
+    {
+      "name": "Get Single Book",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/{{bookId}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "{{bookId}}"]
+        }
+      }
+    },
+    {
+      "name": "Create New Book",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"The Great Gatsby\",\n  \"author\": \"F. Scott Fitzgerald\",\n  \"publishedYear\": 1925\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/books",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books"]
+        }
+      }
+    },
+    {
+      "name": "Update Book",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Updated Title\",\n  \"author\": \"Updated Author\",\n  \"publishedYear\": 2023\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/books/{{bookId}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "{{bookId}}"]
+        }
+      }
+    },
+    {
+      "name": "Delete Book",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/{{bookId}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "{{bookId}}"]
+        }
+      }
+    },
+    {
+      "name": "Bulk Import Books",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "csv",
+              "type": "file",
+              "src": "/path/to/your/sample-books.csv"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3000/books/import",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "import"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "bookId",
+      "value": "REPLACE_WITH_ACTUAL_UUID"
+    }
+  ]
+}

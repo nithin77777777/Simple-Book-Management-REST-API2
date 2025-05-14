@@ -1,0 +1,61 @@
+@baseUrl = http://localhost:3000
+
+### 1. GET all books (empty at first)
+GET {{baseUrl}}/books
+
+### 2. POST - Add sample book 1
+# @name book1
+POST {{baseUrl}}/books
+Content-Type: application/json
+
+{
+  "title": "To Kill a Mockingbird",
+  "author": "Harper Lee",
+  "publishedYear": 1960
+}
+
+### 3. POST - Add sample book 2
+# @name book2
+POST {{baseUrl}}/books
+Content-Type: application/json
+
+{
+  "title": "1984",
+  "author": "George Orwell",
+  "publishedYear": 1949
+}
+
+### 4. GET all books (now shows 2 books)
+GET {{baseUrl}}/books
+
+### 5. GET single book (using captured ID)
+@firstBookId = {{book1.response.body.id}}
+GET {{baseUrl}}/books/{{firstBookId}}
+
+### 6. PUT - Update first book
+PUT {{baseUrl}}/books/{{firstBookId}}
+Content-Type: application/json
+
+{
+  "title": "To Kill a Mockingbird (Special Edition)",
+  "author": "Harper Lee",
+  "publishedYear": 1960
+}
+
+### 7. DELETE second book
+@secondBookId = {{book2.response.body.id}}
+DELETE {{baseUrl}}/books/{{secondBookId}}
+
+### 8. Bulk import from CSV
+POST {{baseUrl}}/books/import
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="csv"; filename="sample-books.csv"
+Content-Type: text/csv
+
+ ./test-data/sample-books.csv
+--boundary--
+
+### 9. Final GET all books
+GET {{baseUrl}}/books
