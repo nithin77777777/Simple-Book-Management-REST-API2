@@ -9,6 +9,12 @@ A Node.js REST API for managing books with CRUD operations and CSV import functi
 - Request logging
 
 ## Setup Instructions
+Testing the API
+
+You can test the API using:
+Postman
+Download and install Postman.
+Import the Postman collection file available in the repository (postman/Book_Management_API_Collection.json).
 
 ### 1. Clone the repository
 ```bash
