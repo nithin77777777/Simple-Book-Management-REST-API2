@@ -14,7 +14,8 @@ Testing the API
 You can test the API using:
 Postman
 Download and install Postman.
-Import the Postman collection file available in the repository (postman/Book_Management_API_Collection.json).
+Import the Postman collection file available in the repository (postman/
+BookManagementAPI.postman_collection.json).
 
 ### 1. Clone the repository
 ```bash
